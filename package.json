@@ -1,0 +1,39 @@
+{
+  "name": "kent",
+  "version": "1.0.0",
+  "description": "heroic web framework for node.js and the browser",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Michael Rawlings",
+    "email": "mlrawlings@gmail.com",
+    "url": "https://github.com/mlrawlings"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "component-delegate": "^0.2.3",
+    "connect": "^3.4.0",
+    "connect-gzip": "^0.1.6",
+    "cookie-parser": "^1.4.0",
+    "detect-dom-ready": "^1.0.2",
+    "express": "^4.13.3",
+    "form-serialize": "^0.6.0",
+    "path-match": "^1.2.3",
+    "serve-static": "^1.10.0",
+    "tiny-cookie": "^0.5.4",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mlrawlings/kent.git"
+  },
+  "homepage": "https://github.com/mlrawlings/kent",
+  "bugs": {
+    "url": "https://github.com/mlrawlings/kent/issues"
+  }
+}
