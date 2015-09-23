@@ -98,14 +98,14 @@ app.start = function listen() {
 	this._fn = compose(this._stack)
 	
 	ready(() => {
-		delgateBody('a[href]', 'click', (e) => {
+		delgateFromDocument('a[href]', 'click', (e) => {
 			if(this.navigate(e.delegateTarget.href)) {
 				e.stopPropagation()
 				e.preventDefault()
 				return false
 			}
 		})
-		delgateBody('form[action]', 'submit', (e) => {
+		delgateFromDocument('form[action]', 'submit', (e) => {
 			if(this.submit(e.delegateTarget)) {
 				e.stopPropagation()
 				e.preventDefault()
@@ -119,8 +119,8 @@ app.start = function listen() {
 	})
 }
 
-function delgateBody(selector, event, handler) {
-	delegate.bind(document.body, selector, event, function(e) {
+function delgateFromDocument(selector, event, handler) {
+	delegate.bind(document, selector, event, function(e) {
 		if(!e.defaultPrevented) {
 			return handler(e)
 		}
