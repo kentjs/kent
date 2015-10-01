@@ -1,6 +1,6 @@
 {
   "name": "kent",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "heroic web framework for node.js and the browser",
   "main": "index.js",
   "license": "MIT",
