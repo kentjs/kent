@@ -99,7 +99,7 @@ app.start = function listen() {
 	
 	ready(() => {
 		delgateFromDocument('a[href]', 'click', (e) => {
-			var isLeftClick = e.buttons & 1
+			var isLeftClick = !e.buttons || e.buttons & 1
 			
 			if(isLeftClick && this.navigate(e.delegateTarget.href)) {
 				e.stopPropagation()
