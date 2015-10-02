@@ -79,11 +79,7 @@ app.submit = function submit(form) {
 		url += (form.action.indexOf('?') == -1 ? '?' : '&') + serialize(form)
 	}
 
-	return this.navigate(url, body).then(() => {
-		if(form.method.toUpperCase() == 'POST' && originalUrl == window.location.href) {
-			form.reset()
-		}
-	})
+	return this.navigate(url, body)
 }
 
 app.redirect = function redirect(url) {
@@ -94,10 +90,10 @@ app.refresh = function refresh() {
 	return this.redirect(window.location.href)
 }
 
-app.start = function listen() {
+app.start = function listen(autoIntercept) {
 	this._fn = compose(this._stack)
 	
-	ready(() => {
+	autoIntercept && ready(() => {
 		delgateFromDocument('a[href]', 'click', (e) => {
 			var isLeftClick = !e.buttons || e.buttons & 1
 			
