@@ -46,6 +46,11 @@ app.connect = function connect(fn) {
 	return this
 }
 
+app.set = function set() {
+	this._connect.set.apply(this._connect, arguments)
+	return this
+}
+
 app.use = function use(fn) {
 	if(fn._stack) this._stack.push.apply(this._stack, fn._stack)
 	else this._stack.push(fn)
