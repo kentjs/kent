@@ -40,10 +40,10 @@ app.navigate = function navigate(url, body, redirect) {
 		return false
 	}
 
-	return new Promise(function(resolve, reject) {
-		ctx.complete = function() {
+	return new Promise((resolve, reject) => {
+		ctx.complete = () => {
 			if(ctx.status && ctx.status >= 300 && ctx.status < 400) {
-				return resolve(this.redirect(ctx.redirect))
+				return resolve(this.navigate(ctx.redirect, null, redirect))
 			}
 
 			if(ctx.href != window.location.href) {
@@ -57,15 +57,15 @@ app.navigate = function navigate(url, body, redirect) {
 			}
 
 			resolve(ctx)
-		}.bind(this)
+		}
 
-		this._fn.call(ctx, function(err) {
+		this._fn.call(ctx, (err) => {
 			if(err) {
 				console.error(err.stack)
 				reject(err)
 			}
 		})()
-	}.bind(this))
+	})
 }
 
 app.submit = function submit(form) {
@@ -113,8 +113,12 @@ app.start = function listen(autoIntercept) {
 	})
 
 	window.addEventListener('popstate', (e) => {
-		if('state' in window.history && window.history.state !== null) this.refresh()
+		if('state' in window.history && window.history.state !== null) {
+			this.refresh().then(() => console.log('complete')).catch(() => console.log('error'))
+		}
 	})
+
+	window.history.replaceState({}, '', window.location.href)
 }
 
 function delgateFromDocument(selector, event, handler) {
