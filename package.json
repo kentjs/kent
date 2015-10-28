@@ -1,8 +1,9 @@
 {
   "name": "kent",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "heroic web framework for node.js and the browser",
-  "main": "index.js",
+  "main": "server.js",
+  "browser": "client.js",
   "license": "MIT",
   "author": {
     "name": "Michael Rawlings",
